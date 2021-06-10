@@ -3,6 +3,7 @@ from flask import render_template
 import requests
 from flask import url_for
 from flask import request
+from flask import redirect
 
 api = "9c001286164fea2ca1d75f9293eae775"
 
@@ -18,6 +19,10 @@ def returnWeather(cityName):
         return None
 
 app = Flask(__name__)
+
+@app.route("/")
+def reroute():
+    return redirect(url_for("main",city="london"))
 
 @app.route("/<city>")
 def main(city):
