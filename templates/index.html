@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{city}} weather</title>
+    <link rel="icon" href="https://cdn3.iconfinder.com/data/icons/summer-189/64/sun_bright_sunlight-512.png">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container d-flex justify-content-center">
+        <div>
+            <input type="text" id="searchCity">
+            <button id="search">Search</button>
+            <script>
+                var input = document.getElementById("searchCity");
+                input.addEventListener("keyup", function(event) {
+                    if (event.keyCode === 13) {
+                        event.preventDefault();
+                        document.getElementById("search").click();
+                    }
+                });
+                document.getElementById("search").onclick = function (){
+                    location.href = "./" + document.getElementById("searchCity").value;
+                };
+            </script>
+        </div>
+        <div class="weather">
+            <div class="row">
+                <div class=" col-md-6">
+                    <div class="card"> <span class="icon"><img class="img-fluid" src="https://img.icons8.com/emoji/96/000000/sun-emoji.png" /></span>
+                        <div class="title">
+                            <p>{{city}}</p>
+                        </div>
+                        <div class="temp">{{temp}}<sup>&deg;</sup>C</div>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="header">General</div>
+                                <div class="value">{{atm}}</div>
+                            </div>
+                            <div class="col-4">
+                                <div class="header">Humidity</div>
+                                <div class="value">{{humidity}}</div>
+                            </div>
+                            <div class="col-4">
+                                <div class="header">Max</div>
+                                <div class="value">{{maxTemp}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
